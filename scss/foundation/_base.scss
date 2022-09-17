@@ -1,0 +1,480 @@
+@use "../global" as *;
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  margin: 0 auto;
+  
+}
+
+html {
+  font-size: 62.5%;
+  font-family: 'Inter', sans-serif;
+}
+
+.section_title {
+  display: inline-block;
+  font-family: 'Irish Grover', cursive;
+  font-size: clamp(3.2rem,4.57vw,6.4rem);
+  border-bottom: 3px solid $orange;
+  padding-bottom: 1.5rem;
+  margin-bottom: 5%;
+  &_other {
+    color: $white;
+    margin-bottom: 7.5%;
+  }
+}
+
+
+a {
+  text-decoration: none;
+}
+
+.logo {
+  font-family: 'Irish Grover', cursive;
+  font-size: clamp(3.2rem,4.57vw,6.4rem);
+  padding-left: 10%;
+}
+
+
+.header {
+  position: fixed;
+  // position: relative;
+  top: 0;
+  width: 100%;
+  z-index : 2;
+
+  background-color: $grey;
+  // padding: 2%;
+  height: 10rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &_nav {
+    display: none;
+    transition: all .8s;
+    
+    &.show {
+      position:fixed;
+      z-index: 999;
+      top: 50%;
+      transform: translateY(-25%);
+      width:100%;
+      height: 100vh;
+      display: block;
+    }
+  }
+  &_li {
+    text-align: center;
+    a {
+      padding: 2.5rem;
+      display: block;
+      color: $white;
+      font-size: clamp(3.2rem,2.85vw,4rem);
+      font-weight: bold;
+      font-family: 'Irish Grover', cursive;
+    }
+  }
+  
+}
+
+
+.openbtn1{
+    position: absolute;
+    z-index: 9999;/*ボタンを最前面に*/
+    top: 3.5%;
+    // transform: translateY(-50%);
+    right: 2%;
+    cursor: pointer;
+    width: 50px;
+    height:50px;
+}
+  
+/*×に変化*/  
+.openbtn1 span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 3px;
+    border-radius: 2px;
+    background-color: $blue;
+    width: 80%;
+  }
+
+.openbtn1 span:nth-of-type(1) {
+  top:10px; 
+}
+
+.openbtn1 span:nth-of-type(2) {
+  top:23px;
+}
+
+.openbtn1 span:nth-of-type(3) {
+  top:36px;
+}
+
+.openbtn1.active span:nth-of-type(1) {
+  top: 18px;
+  left: 18px;
+  transform: translateY(6px) rotate(-45deg);
+  width: 30%;
+}
+
+.openbtn1.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.openbtn1.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+}
+
+
+.circle-bg{
+  position: fixed;
+  z-index:3;
+  /*丸の形*/
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: $orange;
+  /*丸のスタート位置と形状*/
+  transform: scale(0);/*scaleをはじめは0に*/
+  top:-50px;
+  left:calc(50% - 50px);/*50%から円の半径を引いた値*/
+  transition: all .6s;/*0.6秒かけてアニメーション*/
+}
+
+.circle-bg.circleactive{
+transform: scale(50);/*クラスが付与されたらscaleを拡大*/
+}
+
+// top-visual-------------------------------
+.main_visual {
+  position: relative;
+  background-image: url(../../img/cups.jpg);
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+
+.main_txt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(2rem,4.57vw,4rem);
+  color: $bage;
+  filter: drop-shadow(3px 3px 4px $grey);
+}
+
+//coporate_vision-------------------------------------
+#coporate_vision {
+  text-align: center;
+  background-color: $bage;
+  padding: 6.7% 9%;
+  
+
+  .vision_sub_title {
+    margin: 11% 0;
+
+    position: relative;
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      height: 7rem;
+      width: 7rem;
+      background-image: url(../../img/odoroku.png);
+      background-size: cover;
+    }
+    &::before {
+      top: -5rem;
+      left: 15%
+    }
+    &::after {
+      top: -5rem;
+      right: 15%;
+      transform: rotate(90deg);
+    }
+  }
+  .vision_sub_title h2{
+    font-size: clamp(1.6rem,2.57vw,3.6rem);
+  }
+}
+
+.coporate_vision_inner {
+  display: flex;
+  gap: 6%;
+  margin: auto;
+  &_img {
+    width: 47%;
+    height: 50vh;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50px;
+    }
+  }
+  &_txt {
+    width: 47%;
+    padding: 5% 4%;
+    border: 3px solid $orange;
+    border-radius: 50px;
+    font-size: clamp(1.6rem,1.71vw,2.4rem);
+    text-align: left;
+  }
+}
+
+// works-------------------------------------
+#works {
+  text-align: center;
+  padding-top: 5.5%;
+}
+.bg_color {
+  background-color: $green;
+}
+
+.other_setting {
+  position: relative;
+  
+  margin-bottom: 8%;
+  &::before,
+  &::after {
+  position: absolute;
+  content: "";
+  display: block;
+  height: 8vh;
+  width: 150%;
+  background-size: cover;
+    @include mq(TB-L) {
+      transform: rotate(-10deg);
+    }
+  }
+  &::before {
+    top: -10px;
+    left: -200%;
+    background-image: url(../../img/sankaku.png);
+  }
+  &::after {
+    top:-10px;
+    right: -200%;
+    background-image: url(../../img/sankaku.png);
+  }
+}
+
+.works_wrapper {
+  padding: 0 8%;
+  &_inner {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5%;
+    
+    &_img {
+      width: 45%;
+      height: 45vh;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    &_txt {
+      width: 45%;
+      padding: 8% 5%;
+      text-align: left;
+      line-height: 1.5;
+      font-size: clamp(1.6rem,1.71vw,2.4rem);
+      background-color: $bage;
+    }
+  }
+}
+
+.order_made {
+  width: 100%;
+  background-color: $bage;
+  &_txt {
+    padding: 5%;
+    p {
+      border: 3px solid $orange;
+      border-radius: 50px;
+      font-size: clamp(1.6rem,1.71vw,2.4rem);
+      text-align: left;
+      padding: 5% 8%;
+      background-color: $white;
+      line-height: 1.5;
+    }
+  }
+.order_made_img {
+  width: 100%;
+  padding-bottom: 3%;
+  img {
+    width: 100%;
+  }
+}
+}
+
+// recruit-------------------------------------
+#recruit {
+  background-color: $red;
+  text-align: center;
+  padding: 6.3% 8.3%;
+  .recruit_wrapper {
+    display: flex;
+    gap: 2%;
+    &_inner {
+      
+      &_img {
+        // width: 25%;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &_txt {
+        // width: 25%;
+        p {
+          font-size: clamp(1.6rem,1.71vw,2.4rem);
+          text-align: left;
+          padding:  26.5% 17%;
+          background-color: $bage;
+        }
+      }
+    }
+  }
+}
+
+// recruit_info-----------------------------
+#recruit_info {
+  background-color: $blue;
+  text-align: center;
+  padding: 6.3% 8.3%;
+  
+}
+.table {
+  width: 80%;
+  margin: 0 auto;
+  background-color: $white;
+  font-size: clamp(1.6rem,1.71vw,2.4rem);
+  &_title {
+    padding: 3.5%;
+    border: 3px solid $blue
+  }
+  &_inner {
+    text-align: left;
+    border: 3px solid $blue;
+    padding-left: 7%;
+  }
+}
+
+// company---------------------------
+#company {
+  text-align: center;
+  padding: 6.3% 8.3%;
+  background-color: $bage;
+}
+.company_title {
+  padding: 3.5%;
+    border: 3px solid $orange;
+}
+.company_inner {
+  text-align: left;
+    border: 3px solid $orange;
+    padding-left: 7%;
+}
+
+// access--------------------------------
+#access {
+  text-align: center;
+  padding: 6.3% 8.3%;
+  .access_inner {
+    display: flex;
+    &_map {
+      display: block;
+      width: 60%;
+      height: 40vh;
+      iframe {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .access_txt {
+    font-size: clamp(1.6rem,1.71vw,2.4rem);
+    text-align: left;
+    padding-left: 13%;;
+    padding-bottom: 6%;
+  &_inner li{
+    padding-bottom: 7%;
+    
+  }
+  p {
+    padding: 10% 4%;
+    border: 3px solid $red;
+    border-radius: 50px;
+  }
+}
+}
+
+// contact-----------------------------------
+#contact {
+  text-align: center;
+  background-color: $bage;
+  padding: 6.3% 8.3%; 
+  
+}
+.contact_table {
+  width: 80%;
+  background-color: $white;
+  margin: 0 auto;
+  
+}
+.contact_title {
+  width: 30%;
+  padding: 3.5%;
+  border: 3px solid $orange;
+  font-size: clamp(1.6rem,1.71vw,2.4rem); 
+}
+.contact_inner {
+  width: 70%;
+  text-align: left;
+  
+  
+  input {
+    width: 100%;
+    border: 3px solid $orange;
+    height: 12rem;
+  }
+}
+textarea {
+  width: 100%;
+  height: 30vh;
+  border: 3px solid $orange;
+}
+.top {
+vertical-align: top;
+}
+
+// btn------------------------------
+.send_btn {
+  background-color: $blue;
+  width: 25rem;
+  height: 6rem;
+  color: $white;
+  font-size: clamp(2rem,2.28vw, 3.2rem);
+}
+
+
+
+
+
