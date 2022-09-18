@@ -4,10 +4,8 @@
   box-sizing: border-box;
 }
 
-
 body {
-  margin: 0 auto;
-  
+  margin: 0 auto; 
 }
 
 html {
@@ -22,12 +20,22 @@ html {
   border-bottom: 3px solid $orange;
   padding-bottom: 1.5rem;
   margin-bottom: 5%;
+  @include mq(TB2) {
+    margin-bottom: 10%;
+  }
+  a {
+    color: $black;
+  }
   &_other {
-    color: $white;
     margin-bottom: 7.5%;
+    @include mq(TB2) {
+      margin-bottom: 10%;
+    }
+    a {
+      color: $white;
+    }
   }
 }
-
 
 a {
   text-decoration: none;
@@ -39,16 +47,11 @@ a {
   padding-left: 10%;
 }
 
-
 .header {
-  position: fixed;
-  // position: relative;
-  top: 0;
+  position: absolute;
   width: 100%;
-  z-index : 2;
-
+  z-index : 3;
   background-color: $grey;
-  // padding: 2%;
   height: 10rem;
   display: flex;
   justify-content: space-between;
@@ -59,70 +62,70 @@ a {
     
     &.show {
       position:fixed;
-      z-index: 999;
+      z-index: 25;
       top: 50%;
-      transform: translateY(-25%);
+      left: 50%;
+      transform: translate(-50% ,-23%);
       width:100%;
       height: 100vh;
       display: block;
+      width: fit-content;
     }
   }
   &_li {
     text-align: center;
     a {
-      padding: 2.5rem;
+      padding-bottom: 5rem;
       display: block;
       color: $white;
-      font-size: clamp(3.2rem,2.85vw,4rem);
+      font-size: clamp(2.4rem,2.85vw,4rem);
       font-weight: bold;
       font-family: 'Irish Grover', cursive;
     }
   }
-  
 }
 
-
-.openbtn1{
+.openbtn1 {
     position: absolute;
-    z-index: 9999;/*ボタンを最前面に*/
-    top: 3.5%;
-    // transform: translateY(-50%);
+    z-index: 20;/*ボタンを最前面に*/
+    top: 3%;
     right: 2%;
     cursor: pointer;
     width: 50px;
     height:50px;
+    &.active {
+      position: fixed;
+      top: 4%;
+    }
+    span {
+      display: inline-block;//×に変化
+      transition: all .4s;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 3px;
+      border-radius: 2px;
+      background-color: $blue;
+      width: 80%;
+      &:nth-of-type(1) {
+        top:10px; 
+      }
+      &:nth-of-type(2) {
+        top:23px;
+      }
+      &:nth-of-type(3) {
+        top:36px;
+      }
+    }
 }
   
-/*×に変化*/  
-.openbtn1 span{
-    display: inline-block;
-    transition: all .4s;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    height: 3px;
-    border-radius: 2px;
-    background-color: $blue;
-    width: 80%;
-  }
-
-.openbtn1 span:nth-of-type(1) {
-  top:10px; 
-}
-
-.openbtn1 span:nth-of-type(2) {
-  top:23px;
-}
-
-.openbtn1 span:nth-of-type(3) {
-  top:36px;
-}
+ 
 
 .openbtn1.active span:nth-of-type(1) {
   top: 18px;
   left: 18px;
   transform: translateY(6px) rotate(-45deg);
-  width: 30%;
+  width: 50%;
 }
 
 .openbtn1.active span:nth-of-type(2) {
@@ -133,9 +136,8 @@ a {
     top: 30px;
     left: 18px;
     transform: translateY(-6px) rotate(45deg);
-    width: 30%;
+    width: 50%;
 }
-
 
 .circle-bg{
   position: fixed;
@@ -144,18 +146,16 @@ a {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  background: $orange;
-  /*丸のスタート位置と形状*/
+  background: $red;
+  /*丸のスタート位置と形*/
   transform: scale(0);/*scaleをはじめは0に*/
   top:-50px;
   left:calc(50% - 50px);/*50%から円の半径を引いた値*/
-  transition: all .6s;/*0.6秒かけてアニメーション*/
+  transition: all .6s;/*0.6秒かけて*/
+  &.circleactive{
+    transform: scale(50);/*クラスが付与scaleを拡大*/
+    }
 }
-
-.circle-bg.circleactive{
-transform: scale(50);/*クラスが付与されたらscaleを拡大*/
-}
-
 // top-visual-------------------------------
 .main_visual {
   position: relative;
@@ -173,8 +173,19 @@ transform: scale(50);/*クラスが付与されたらscaleを拡大*/
   font-size: clamp(2rem,4.57vw,4rem);
   color: $bage;
   filter: drop-shadow(3px 3px 4px $grey);
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-fill-mode:forwards;
+  font-family: 'Kiwi Maru', serif;
 }
-
+@keyframes fadeIn{ /*その場でふわっと*/
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
 //coporate_vision-------------------------------------
 #coporate_vision {
   text-align: center;
@@ -183,10 +194,12 @@ transform: scale(50);/*クラスが付与されたらscaleを拡大*/
   
 
   .vision_sub_title {
-    margin: 11% 0;
-
+    margin-bottom: 10%;
+    margin-top: 6%;
     position: relative;
-
+    @include mq(TB2) {
+      margin-top: 10%;
+    }
     &::before,
     &::after {
       position: absolute;
@@ -196,15 +209,39 @@ transform: scale(50);/*クラスが付与されたらscaleを拡大*/
       width: 7rem;
       background-image: url(../../img/odoroku.png);
       background-size: cover;
+      @include mq(TB2) {
+        height: 4rem;
+        width: 4rem;
+      }
     }
     &::before {
-      top: -5rem;
-      left: 15%
+      top: -4rem;
+      left: 15%;
+      @include mq(TB) {
+        left: 10%;
+      }
+      @include mq(TB2) {
+        left: 0;
+        @include mq(SP) {
+          left: -4%;
+        }
+      }
     }
+
     &::after {
-      top: -5rem;
+      top: -4rem;
       right: 15%;
       transform: rotate(90deg);
+      @include mq(TB) {
+        right: 10%;
+      }
+      @include mq(TB2) {
+        right: 0%;
+        @include mq(SP) {
+          
+          right: -4%;
+        }
+      }
     }
   }
   .vision_sub_title h2{
@@ -216,9 +253,17 @@ transform: scale(50);/*クラスが付与されたらscaleを拡大*/
   display: flex;
   gap: 6%;
   margin: auto;
+  @include mq(TB) {
+    flex-direction: column;
+    align-items: center;
+  }
   &_img {
     width: 47%;
-    height: 50vh;
+    height: 100%;
+    @include mq(TB) {
+      width: 100%;
+      margin-bottom: 9%;
+    }
     img {
       width: 100%;
       height: 100%;
@@ -228,18 +273,26 @@ transform: scale(50);/*クラスが付与されたらscaleを拡大*/
   }
   &_txt {
     width: 47%;
-    padding: 5% 4%;
+    padding: 7.3% 4%;
     border: 3px solid $orange;
     border-radius: 50px;
     font-size: clamp(1.6rem,1.71vw,2.4rem);
     text-align: left;
+    
+    background-color: $white;
+    @include mq(TB) {
+      width: 100%;
+      padding: 10% 8%
+    }
   }
 }
-
 // works-------------------------------------
 #works {
   text-align: center;
   padding-top: 5.5%;
+  @include mq(TB2) {
+    padding-top: 12%;
+  }
 }
 .bg_color {
   background-color: $green;
@@ -247,7 +300,6 @@ transform: scale(50);/*クラスが付与されたらscaleを拡大*/
 
 .other_setting {
   position: relative;
-  
   margin-bottom: 8%;
   &::before,
   &::after {
@@ -259,30 +311,82 @@ transform: scale(50);/*クラスが付与されたらscaleを拡大*/
   background-size: cover;
     @include mq(TB-L) {
       transform: rotate(-10deg);
+      @include mq(SP2) {
+      height: 4vh;
+      width: 100%;
+      transform: rotate(-5deg);
+      }
     }
   }
   &::before {
     top: -10px;
     left: -200%;
     background-image: url(../../img/sankaku.png);
+    @include mq(SP2) {
+      left: -125%
+    }
   }
   &::after {
     top:-10px;
     right: -200%;
     background-image: url(../../img/sankaku.png);
+    @include mq(SP2) {
+      right: -125%
+    }
   }
 }
 
+  .fadeup{
+    animation-name:fadeupAnime;
+    animation-duration: 1.5s;
+    animation-fill-mode:forwards;
+    opacity:0;
+    }
+  
+  @keyframes fadeupAnime{
+    from {
+      opacity: 0;
+      transform: translateY(100px);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fadeupTrigger{
+      opacity: 0;
+  }
+  // works---------------------------------------
 .works_wrapper {
   padding: 0 8%;
   &_inner {
     display: flex;
     justify-content: center;
-    padding-bottom: 5%;
+    padding-bottom: 6%;
+    @include mq(TB2) {
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 9%;
+    }
+    &:nth-of-type(3) img {
+      object-position: right;
+    }
+    &:nth-of-type(2) {
+      flex-direction: row-reverse;
+      @include mq(TB2) {
+        flex-direction: row-reverse;
+        flex-direction: column;
+      }
+    }
     
     &_img {
       width: 45%;
-      height: 45vh;
+      // height: 45vh;
+      @include mq(TB2) {
+        width: 100%;
+      }
       img {
         width: 100%;
         height: 100%;
@@ -293,18 +397,26 @@ transform: scale(50);/*クラスが付与されたらscaleを拡大*/
       width: 45%;
       padding: 8% 5%;
       text-align: left;
-      line-height: 1.5;
+      line-height: 2;
       font-size: clamp(1.6rem,1.71vw,2.4rem);
       background-color: $bage;
+      @include mq(TB2) {
+        width: 100%;
+      }
+      @include mq(SP2) {
+        padding: 9% 12%;
+      }
     }
   }
 }
-
 .order_made {
   width: 100%;
   background-color: $bage;
   &_txt {
     padding: 5%;
+    @include mq(SP2) {
+      padding: 12%
+    }
     p {
       border: 3px solid $orange;
       border-radius: 50px;
@@ -312,28 +424,40 @@ transform: scale(50);/*クラスが付与されたらscaleを拡大*/
       text-align: left;
       padding: 5% 8%;
       background-color: $white;
-      line-height: 1.5;
+      line-height: 2;
+      @include mq(SP2) {
+      padding: 8% 11%;
+      }
     }
   }
 .order_made_img {
   width: 100%;
-  padding-bottom: 3%;
+  @include mq(SP2) {
+    height: 45vh;
+  }
   img {
     width: 100%;
+    @include mq(SP2) {
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
 }
-
 // recruit-------------------------------------
 #recruit {
   background-color: $red;
   text-align: center;
   padding: 6.3% 8.3%;
+  
   .recruit_wrapper {
     display: flex;
     gap: 2%;
+    @include mq(TB2) {
+      flex-direction: column;
+    }
     &_inner {
-      
+      margin-bottom: 2rem;
       &_img {
         // width: 25%;
         img {
@@ -348,61 +472,107 @@ transform: scale(50);/*クラスが付与されたらscaleを拡大*/
           text-align: left;
           padding:  26.5% 17%;
           background-color: $bage;
+          line-height: 1.5;
+          @include mq(TB2) {
+            padding: 16% 8%;
+          }
         }
       }
     }
   }
 }
-
 // recruit_info-----------------------------
 #recruit_info {
   background-color: $blue;
   text-align: center;
   padding: 6.3% 8.3%;
-  
+  @include mq(TB2) {
+    padding: 15% 4%;
+  }
 }
 .table {
   width: 80%;
   margin: 0 auto;
   background-color: $white;
   font-size: clamp(1.6rem,1.71vw,2.4rem);
+  @include mq(TB2) {
+    width: 98%;
+    text-align: left;
+  }
   &_title {
     padding: 3.5%;
-    border: 3px solid $blue
+    border: 3px solid $blue;
+    @include mq(TB2) {
+      width: 100%;
+      display: block;
+      padding: 7%;
+      border: 1px solid $blue;
+    }
   }
   &_inner {
     text-align: left;
     border: 3px solid $blue;
+    padding:  7%;
     padding-left: 7%;
+    @include mq(TB2) {
+      width: 100%;
+      display: block;
+      border: 1px solid $blue;
+    }
   }
 }
-
 // company---------------------------
 #company {
   text-align: center;
   padding: 6.3% 8.3%;
   background-color: $bage;
+  @include mq(TB2) {
+    padding: 15% 5%;
+  }
 }
 .company_title {
   padding: 3.5%;
     border: 3px solid $orange;
+    @include mq(TB2) {
+      display: block;
+      width: 100%;
+      border: 1px solid $orange;
+      padding: 6%
+    }
 }
 .company_inner {
   text-align: left;
     border: 3px solid $orange;
     padding-left: 7%;
+    
+    @include mq(TB2) {
+      display: block;
+      width: 100%;
+      border: 1px solid $orange;
+      padding: 6%;
+    }
 }
-
 // access--------------------------------
 #access {
   text-align: center;
   padding: 6.3% 8.3%;
+  @include mq(TB2) {
+    padding: unset;
+    padding: 14% 0
+  }
   .access_inner {
     display: flex;
+    @include mq(TB2) {
+      flex-direction: column;
+    }
     &_map {
       display: block;
       width: 60%;
       height: 40vh;
+      @include mq(TB2) {
+        width: 100%;
+        height: 30vh;
+      }
       iframe {
         width: 100%;
         height: 100%;
@@ -411,69 +581,128 @@ transform: scale(50);/*クラスが付与されたらscaleを拡大*/
   }
   .access_txt {
     font-size: clamp(1.6rem,1.71vw,2.4rem);
-    text-align: left;
-    padding-left: 13%;;
+    padding-left: 13%;
     padding-bottom: 6%;
+    @include mq(TB2) {
+      margin: 0 auto;
+      padding: unset;
+      padding-top: 10%;
+    }
+    &_inner {
+      @include mq(TB2) {
+        margin-left: 20%;
+      }
+    }
   &_inner li{
     padding-bottom: 7%;
-    
+    width: fit-content;
   }
   p {
     padding: 10% 4%;
     border: 3px solid $red;
     border-radius: 50px;
+    @include mq(TB2) {
+      padding: 12% 10%;
+      text-align: left;
+    }
   }
 }
 }
-
 // contact-----------------------------------
 #contact {
   text-align: center;
   background-color: $bage;
   padding: 6.3% 8.3%; 
-  
+  @include mq(TB2) {
+    padding: 16% 4%
+  }
 }
 .contact_table {
   width: 80%;
   background-color: $white;
   margin: 0 auto;
-  
+  margin-bottom: 7%;
+  // border: 3px solid $orange;
+  @include mq(TB2) {
+    width: 98%;
+    margin-bottom: 15%;
+  }
 }
 .contact_title {
-  width: 30%;
+  width: 35%;
   padding: 3.5%;
   border: 3px solid $orange;
   font-size: clamp(1.6rem,1.71vw,2.4rem); 
 }
 .contact_inner {
-  width: 70%;
+  width: 65%;
   text-align: left;
-  
+  border: 3px solid $orange;
   
   input {
     width: 100%;
-    border: 3px solid $orange;
+    border: none;
     height: 12rem;
   }
 }
 textarea {
   width: 100%;
   height: 30vh;
-  border: 3px solid $orange;
+  border: none;
 }
 .top {
-vertical-align: top;
+  vertical-align: top;
 }
-
 // btn------------------------------
 .send_btn {
-  background-color: $blue;
-  width: 25rem;
-  height: 6rem;
+  background-color: $lightblue;
+  width: 30rem;
+  height: 8rem;
   color: $white;
   font-size: clamp(2rem,2.28vw, 3.2rem);
+  font-weight: bold;
+  border-radius: 50px;
+  border: none;
+  transition: background-color 1s;
+  @include mq(TB2) {
+    width: 15rem;
+    height: 5rem;
+  }
+  &:hover {
+    background-color: $perpul;
+  }
 }
 
+.footer {
+  background-color: $orange;
+  padding:  6.3% 8.3%;
+    &_logo {
+    font-family: 'Irish Grover', cursive;
+    font-size: clamp(3.2rem,4.57vw,6.4rem);
+    text-align: center;
+    margin-bottom: 6.5%;
+    a {
+      color: $black;
+    }
+  }
+  .sns_logo {
+    display: flex;
+    justify-content: center;
+    gap: 6%
+  }
+  .twitter_logo {
+    width: 12%;
+    img {
+      width: 100%;
+    }
+  }
+  .insta_logo {
+    width: 12%;
+    img {
+      width: 100%;
+    }
+  }
+}
 
 
 

@@ -1,29 +1,53 @@
 $(function() {
-  function end_loader() {
-    $('.loading_txt').fadeOut(800);
-  }
-  $(window).on('load', function() {
-    setTimeout(function () {
-      end_loader();
-    }, 2000)
-    
-    $(document).ready(function(){
-      setTimeout(function(){ $('.loading').toggleClass('slide') }, 4000);
-      setTimeout(function(){ $('.loading').toggleClass('slide2')}, 5000);
-      
-      });
-  })
-
+  
   $(".openbtn1").click(function () {//ボタンがクリックされたら
     $(this).toggleClass('active');//ボタン自身に activeクラスを付与し
       $(".header_nav").toggleClass('show');//ナビゲーションにpanelactiveクラスを付与
       $(".circle-bg").toggleClass('circleactive');//丸背景にcircleactiveクラスを付与
   });
   
-  $("#g-nav a").click(function () {//ナビゲーションのリンクがクリックされたら
+  $(".header_li a").click(function () {//ナビゲーションのリンクがクリックされたら
       $(".openbtn1").removeClass('active');//ボタンの activeクラスを除去し
       $(".header_nav").removeClass('show');//ナビゲーションのpanelactiveクラスを除去
       $(".circle-bg").removeClass('circleactive');//丸背景のcircleactiveクラスを除去
   });
+
+  
+
+  var current;
+$.scrollify({
+section:".scroll",
+setHeights:false,
+before:function(i,box){
+current = i;
+},
+});
+
+$(window).on('resize',function(){
+if(current){
+var currentScrl = $('.scroll').eq(current).offset().top;
+$(window).scrollTop(currentScrl);
+}
+});
+
+
+function fadeAnime(){
+  // ふわっ
+  $('.fadeupTrigger').each(function(){ //fadeUpTriggerというクラス名が
+    var elemPos = $(this).offset().top-50;//要素より、50px上の
+    var scroll = $(window).scrollTop();
+    var windowHeight = $(window).height();
+    if (scroll >= elemPos - windowHeight){
+    $(this).addClass('fadeup');// 画面内に入ったらfadeUpというクラス名を追記
+    }else{
+    $(this).removeClass('fadeup');// 画面外に出たらfadeUpというクラス名を外す
+    }
+    });
+}
+
+// 画面をスクロールをしたら動かしたい場合の記述
+  $(window).scroll(function (){
+    fadeAnime();/* アニメーション用の関数を呼ぶ*/
+  });// ここまで画面をスクロールをしたら動かしたい場合
   
 })
