@@ -500,7 +500,7 @@ a {
 #recruit_info {
   background-color: $blue;
   text-align: center;
-  padding: 6.3% 8.3%;
+  padding: 6.3% 5%;
   @include mq(TB2) {
     padding: 15% 4%;
   }
@@ -539,7 +539,7 @@ a {
 // company---------------------------
 #company {
   text-align: center;
-  padding: 6.3% 8.3%;
+  padding: 6.3% 5%;
   background-color: $bage;
   @include mq(TB2) {
     padding: 15% 5%;
@@ -631,13 +631,13 @@ a {
 #contact {
   text-align: center;
   background-color: $bage;
-  padding: 6.3% 8.3%; 
+  padding: 6.5% 5%; 
   @include mq(TB2) {
     padding: 16% 4%
   }
 }
 .contact_table {
-  width: 80%;
+  width: 90%;
   background-color: $white;
   margin: 0 auto;
   margin-bottom: 7%;

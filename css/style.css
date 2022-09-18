@@ -556,7 +556,7 @@ a {
 #recruit_info {
   background-color: rgb(31, 17, 87);
   text-align: center;
-  padding: 6.3% 8.3%;
+  padding: 6.3% 5%;
 }
 @media screen and (max-width:645px) {
   #recruit_info {
@@ -604,7 +604,7 @@ a {
 
 #company {
   text-align: center;
-  padding: 6.3% 8.3%;
+  padding: 6.3% 5%;
   background-color: rgb(250, 247, 227);
 }
 @media screen and (max-width:645px) {
@@ -714,7 +714,7 @@ a {
 #contact {
   text-align: center;
   background-color: rgb(250, 247, 227);
-  padding: 6.3% 8.3%;
+  padding: 6.5% 5%;
 }
 @media screen and (max-width:645px) {
   #contact {
@@ -723,7 +723,7 @@ a {
 }
 
 .contact_table {
-  width: 80%;
+  width: 90%;
   background-color: #fff;
   margin: 0 auto;
   margin-bottom: 7%;
