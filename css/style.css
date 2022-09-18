@@ -169,8 +169,10 @@ a {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 100%;
+  text-align: center;
   transform: translate(-50%, -50%);
-  font-size: clamp(2rem, 4.57vw, 4rem);
+  font-size: clamp(2.4rem, 4.57vw, 4rem);
   color: rgb(250, 247, 227);
   filter: drop-shadow(3px 3px 4px rgba(217, 217, 217, 0.69));
   animation-name: fadeIn;
