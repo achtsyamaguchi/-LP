@@ -159,7 +159,7 @@ a {
 
 .main_visual {
   position: relative;
-  background-image: url(../../img/cups.jpg);
+  background-image: url(../img/cups.jpg);
   background-size: cover;
   height: 100vh;
   width: 100%;
@@ -192,6 +192,11 @@ a {
   background-color: rgb(250, 247, 227);
   padding: 6.7% 9%;
 }
+@media screen and (max-width:645px) {
+  #coporate_vision {
+    padding: 6.7% 4%;
+  }
+}
 #coporate_vision .vision_sub_title {
   margin-bottom: 10%;
   margin-top: 6%;
@@ -208,7 +213,7 @@ a {
   display: block;
   height: 7rem;
   width: 7rem;
-  background-image: url(../../img/odoroku.png);
+  background-image: url(../img/odoroku.png);
   background-size: cover;
 }
 @media screen and (max-width:645px) {
@@ -233,7 +238,12 @@ a {
 }
 @media screen and (max-width:645px) and (max-width:425px) {
   #coporate_vision .vision_sub_title::before {
-    left: -4%;
+    left: 6%;
+  }
+}
+@media screen and (max-width:645px) and (max-width:375px) {
+  #coporate_vision .vision_sub_title::before {
+    left: -2%;
   }
 }
 #coporate_vision .vision_sub_title::after {
@@ -253,7 +263,12 @@ a {
 }
 @media screen and (max-width:645px) and (max-width:425px) {
   #coporate_vision .vision_sub_title::after {
-    right: -4%;
+    right: 6%;
+  }
+}
+@media screen and (max-width:645px) and (max-width:375px) {
+  #coporate_vision .vision_sub_title::after {
+    right: -2%;
   }
 }
 #coporate_vision .vision_sub_title h2 {
@@ -273,7 +288,7 @@ a {
 }
 .coporate_vision_inner_img {
   width: 47%;
-  height: 100%;
+  height: auto;
 }
 @media screen and (max-width:800px) {
   .coporate_vision_inner_img {
@@ -295,6 +310,7 @@ a {
   font-size: clamp(1.6rem, 1.71vw, 2.4rem);
   text-align: left;
   background-color: #fff;
+  line-height: 1.5;
 }
 @media screen and (max-width:800px) {
   .coporate_vision_inner_txt {
@@ -344,7 +360,7 @@ a {
 .other_setting::before {
   top: -10px;
   left: -200%;
-  background-image: url(../../img/sankaku.png);
+  background-image: url(../img/sankaku.png);
 }
 @media screen and (max-width:480px) {
   .other_setting::before {
@@ -354,7 +370,7 @@ a {
 .other_setting::after {
   top: -10px;
   right: -200%;
-  background-image: url(../../img/sankaku.png);
+  background-image: url(../img/sankaku.png);
 }
 @media screen and (max-width:480px) {
   .other_setting::after {
@@ -384,7 +400,7 @@ a {
 }
 
 .works_wrapper {
-  padding: 0 8%;
+  padding: 0 6%;
 }
 .works_wrapper_inner {
   display: flex;
@@ -427,7 +443,7 @@ a {
   width: 45%;
   padding: 8% 5%;
   text-align: left;
-  line-height: 2;
+  line-height: 1.5;
   font-size: clamp(1.6rem, 1.71vw, 2.4rem);
   background-color: rgb(250, 247, 227);
 }
@@ -449,11 +465,6 @@ a {
 .order_made_txt {
   padding: 5%;
 }
-@media screen and (max-width:480px) {
-  .order_made_txt {
-    padding: 12%;
-  }
-}
 .order_made_txt p {
   border: 3px solid rgb(225, 180, 18);
   border-radius: 50px;
@@ -461,7 +472,7 @@ a {
   text-align: left;
   padding: 5% 8%;
   background-color: #fff;
-  line-height: 2;
+  line-height: 1.5;
 }
 @media screen and (max-width:480px) {
   .order_made_txt p {
@@ -489,7 +500,12 @@ a {
 #recruit {
   background-color: #D48968;
   text-align: center;
-  padding: 6.3% 8.3%;
+  padding: 6.3% 4%;
+}
+@media screen and (max-width:800px) {
+  #recruit {
+    padding: 6.3% 1%;
+  }
 }
 #recruit .recruit_wrapper {
   display: flex;
@@ -503,20 +519,37 @@ a {
 #recruit .recruit_wrapper_inner {
   margin-bottom: 2rem;
 }
+@media screen and (max-width:645px) {
+  #recruit .recruit_wrapper_inner_img {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
 #recruit .recruit_wrapper_inner_img img {
   width: 100%;
   height: 100%;
 }
+@media screen and (max-width:645px) {
+  #recruit .recruit_wrapper_inner_txt {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
 #recruit .recruit_wrapper_inner_txt p {
   font-size: clamp(1.6rem, 1.71vw, 2.4rem);
   text-align: left;
-  padding: 26.5% 17%;
+  padding: 15% 13%;
   background-color: rgb(250, 247, 227);
   line-height: 1.5;
 }
+@media screen and (max-width:800px) {
+  #recruit .recruit_wrapper_inner_txt p {
+    padding: 12% 10%;
+  }
+}
 @media screen and (max-width:645px) {
   #recruit .recruit_wrapper_inner_txt p {
-    padding: 16% 8%;
+    padding: 16% 10%;
   }
 }
 
@@ -628,7 +661,7 @@ a {
 #access .access_inner_map {
   display: block;
   width: 60%;
-  height: 40vh;
+  height: 50vh;
 }
 @media screen and (max-width:645px) {
   #access .access_inner_map {
@@ -642,8 +675,17 @@ a {
 }
 #access .access_txt {
   font-size: clamp(1.6rem, 1.71vw, 2.4rem);
-  padding-left: 13%;
-  padding-bottom: 6%;
+}
+#access .access_txt_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8%;
+}
+@media screen and (max-width:645px) {
+  #access .access_txt_box {
+    margin: 0 6%;
+  }
 }
 @media screen and (max-width:645px) {
   #access .access_txt {
@@ -652,23 +694,19 @@ a {
     padding-top: 10%;
   }
 }
-@media screen and (max-width:645px) {
-  #access .access_txt_inner {
-    margin-left: 20%;
-  }
-}
 #access .access_txt_inner li {
   padding-bottom: 7%;
   width: fit-content;
+  margin-left: 18%;
 }
 #access .access_txt p {
   padding: 10% 4%;
-  border: 3px solid #D48968;
+  border: 1px solid #D48968;
   border-radius: 50px;
 }
 @media screen and (max-width:645px) {
   #access .access_txt p {
-    padding: 12% 10%;
+    padding: 12% 8%;
     text-align: left;
   }
 }

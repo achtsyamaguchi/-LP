@@ -14,21 +14,21 @@ $(function() {
 
   
 
-  var current;
-$.scrollify({
-section:".scroll",
-setHeights:false,
-before:function(i,box){
-current = i;
-},
-});
+//   var current;
+// $.scrollify({
+// section:".scroll",
+// setHeights:false,
+// before:function(i,box){
+// current = i;
+// },
+// });
 
-$(window).on('resize',function(){
-if(current){
-var currentScrl = $('.scroll').eq(current).offset().top;
-$(window).scrollTop(currentScrl);
-}
-});
+// $(window).on('resize',function(){
+// if(current){
+// var currentScrl = $('.scroll').eq(current).offset().top;
+// $(window).scrollTop(currentScrl);
+// }
+// });
 
 
 function fadeAnime(){
