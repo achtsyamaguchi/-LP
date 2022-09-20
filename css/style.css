@@ -159,10 +159,26 @@ a {
 
 .main_visual {
   position: relative;
-  background-image: url(../img/cups.jpg);
-  background-size: cover;
   height: 100vh;
   width: 100%;
+}
+.main_visual img {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+@keyframes fadezoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1); /* 拡大率 */
+  }
+}
+.add-animation {
+  animation: fadezoom 5s 0s forwards;
 }
 
 .main_txt {
@@ -607,7 +623,8 @@ a {
 #company {
   text-align: center;
   padding: 6.3% 5%;
-  background-color: rgb(250, 247, 227);
+  background-image: url(../img/bg.png);
+  background-size: cover;
 }
 @media screen and (max-width:645px) {
   #company {
@@ -615,9 +632,13 @@ a {
   }
 }
 
+.company_table {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
 .company_title {
   padding: 3.5%;
-  border: 3px solid rgb(225, 180, 18);
+  border: 2px solid rgb(225, 180, 18);
 }
 @media screen and (max-width:645px) {
   .company_title {
@@ -630,7 +651,7 @@ a {
 
 .company_inner {
   text-align: left;
-  border: 3px solid rgb(225, 180, 18);
+  border: 2px solid rgb(225, 180, 18);
   padding-left: 7%;
 }
 @media screen and (max-width:645px) {
@@ -662,7 +683,7 @@ a {
 }
 #access .access_inner_map {
   display: block;
-  width: 60%;
+  width: 55%;
   height: 50vh;
 }
 @media screen and (max-width:645px) {
@@ -698,17 +719,17 @@ a {
 }
 #access .access_txt_inner li {
   padding-bottom: 7%;
-  width: fit-content;
-  margin-left: 18%;
 }
 #access .access_txt p {
   padding: 10% 4%;
   border: 1px solid #D48968;
-  border-radius: 50px;
+  border-radius: 35px;
+  display: inline-block;
+  text-align: center;
 }
 @media screen and (max-width:645px) {
   #access .access_txt p {
-    padding: 12% 8%;
+    padding: 10% 6%;
     text-align: left;
   }
 }

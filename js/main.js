@@ -12,25 +12,9 @@ $(function() {
       $(".circle-bg").removeClass('circleactive');//丸背景のcircleactiveクラスを除去
   });
 
+
+
   
-
-//   var current;
-// $.scrollify({
-// section:".scroll",
-// setHeights:false,
-// before:function(i,box){
-// current = i;
-// },
-// });
-
-// $(window).on('resize',function(){
-// if(current){
-// var currentScrl = $('.scroll').eq(current).offset().top;
-// $(window).scrollTop(currentScrl);
-// }
-// });
-
-
 function fadeAnime(){
   // ふわっ
   $('.fadeupTrigger').each(function(){ //fadeUpTriggerというクラス名が
@@ -49,5 +33,11 @@ function fadeAnime(){
   $(window).scroll(function (){
     fadeAnime();/* アニメーション用の関数を呼ぶ*/
   });// ここまで画面をスクロールをしたら動かしたい場合
+
+
+
+
+
+  
   
 })
